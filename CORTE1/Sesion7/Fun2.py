@@ -2,4 +2,5 @@
 
 def matrix():
     nombre=input('ingrese su nombre')
-print('inicio del programa')
+    print('Estas en la matrix', nombre)
+
