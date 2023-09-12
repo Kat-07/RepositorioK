@@ -1,58 +1,62 @@
 import random as r
 
-def main():
-    print('Bienvenido a BLACKJACK')
-    print('¡Que comience el juego!')
-    cartas()
-    
-def cartas():
-    baraja='A23456789QJK'
-    for i in range(1):
-        cartas=[]
-        cartas.append(r.choice(baraja))
-        cartas.append(r.choice(baraja))
-        print(cartas)
-        conteo(cartas)
+def repartir():
+    baraja='A23456789JQK'
+    carta=r.choice(baraja)
+    return carta
 
+def contador(mano):
+    cartas=[]
+    for i in range(len(mano)):
+        cartas.append(valor(mano[i]))
+    print(cartas)
+    if 'A' in mano:
+        conteo=sum(cartas)
+        while conteo>21 and 'A' in mano:
+            indise=mano.index('A')
+            cartas[indise] = 1
+            conteo=sum(cartas)
+    return sum(cartas)
+   
+def valor(baraja):
+    jack=['J','Q','K']
+    if baraja in jack:
+        baraja=10
+    if baraja=='A':
+        baraja=11
+    else:
+        baraja=int(baraja)
+    return baraja
+
+def inicio():
+    mano=[]
+    mano.append(repartir())
+    mano.append(repartir())
+    print (mano)
+    total=contador(mano)
+    print(f'contador: {total}')
+    if total>21:
+        print('__busted__')
+    
     opc='y'
     while opc=='y':
-        opc=input('Quiere otra carta? (y/n)')
+        
+        opc=input('Quiere otra carta? (y/n) ')
         if opc=='y':
-            cartas.append(r.choice())
-            print(cartas)
-            conteo(cartas)
+            mano.append(repartir())
+            print(mano)
+            total=contador(mano)
+            print(f'contador: {total}')
+            if total>21:
+                print('__busted__')
+                break
         elif opc=='n':
             break
         else:
             print('opcion invalida')
             opc='y'
 
-def valor(c):
-    jack=['J','Q','K']
-    if c in jack:
-        c=10
-    elif c =='A':
-        c=11
-    else:
-        c=int(c)
-    return c
+if __name__=='__main__':
+    inicio()
 
-def conteo(cartas):
-    valor_cartas=[]
-    for i in range(len((cartas))):
-        valor_cartas.append(valor(cartas[i]))
-    print(valor_cartas)
-    conteo=sum(valor_cartas)
-    print('conteo:',conteo)
-
-    if conteo<21:
-        print()
-        
-    elif conteo==21:
-        print('BLACKJACK')
-    elif conteo>21:
-        print('__Busned__')
-
-if __name__=="__main__":
-    main()
     
