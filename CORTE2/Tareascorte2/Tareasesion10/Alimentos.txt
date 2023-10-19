@@ -1,4 +1,3 @@
-CODIGO,DESCRIPCION,TARIFA IVA LEY VIGENTE
 1110100,Arroz,0
 1110200,Harina de maiz y otras harinas,0.05
 1110300,Pastas alimenticias,0.05
@@ -55,4 +54,3 @@ CODIGO,DESCRIPCION,TARIFA IVA LEY VIGENTE
 1920200,Comidas rapidas calientes,0
 1930100,Gastos de cafeteria,0
 1930200,Comidas rapidas frias,0
-

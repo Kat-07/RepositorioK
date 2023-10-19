@@ -31,7 +31,6 @@ def main_read3():
     a=suma(lista)
     print(a)
 
-
 if __name__=="__main__":
     #main_read()
     #main_read2()
