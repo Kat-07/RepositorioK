@@ -1,0 +1,136 @@
+#Con base en un ejercicio anterior, para calcular el precio bruto de un elemento de la canasta familiar de acuerdo al IVA.
+#Cree una SuperClase llamada articulos, con los parámetros (nombre, precio)
+#Cree tres subClases para organizar los tres tipos de artículos de la canasta familiar de acuerdo al IVA aplicado(0%, 5% o 19%),
+# que heredan los parámetros del padre.
+#Utilice una función para calcular el precio bruto y su respectivo valor de IVA de acuerdo a la lista de alimentos de la canasta familiar.
+
+class Articulos:
+    
+    def __init__(self,nombre:str,precio:float):
+        self.__nombre=nombre  #campo privado
+        self.__precio=precio #campo privado
+
+    #-------------------setters------------------------
+
+    def setNombre(self,nombre:str):
+        self.__nombre=nombre
+
+    def setPrecio(self,precio:float):
+        self.__precio=precio
+
+    #-------------------getters-------------------------
+
+    def getNombre(self):
+        return self.__nombre
+
+    def getPrecio(self):
+        return self.__precio
+
+class IvaCero(Articulos):
+    def __init__(self, nombre: str, precio: float,valorBase:float, valorIva:float):
+        super().__init__(nombre, precio, valorBase, valorIva)
+        self.__valorBase=valorBase
+        self.__valorIva=valorIva
+
+    #-------Setters----------
+    def setValorIva(self,valorIva:float):
+        self.__valorIva=valorIva
+    def setValorBase(self,valorBase:float):
+        self.__valorBase=valorBase
+    
+    #--------Getters---------
+    def getValorBase(self):
+        return self.__valorBase
+    def getValorIva(self):
+        return self.__valorIva
+    
+    #--------Metodo----------
+    def IVA(self):
+        valorBase=self.__precio
+        iva=0
+        return valorBase, iva 
+    
+    def getIva(self):
+
+
+class IvaCinco(Articulos):
+    def __init__(self, nombre: str, precio: float,valorBase:float, valorIva:float):
+        super().__init__(nombre, precio, valorBase, valorIva)
+        self.__valorBase=valorBase
+        self.__valorIva=valorIva
+
+    #-------Setters----------
+    def setValorIva(self,valorIva:float):
+        self.__valorIva=valorIva
+    def setValorBase(self,valorBase:float):
+        self.__valorBase=valorBase
+    
+    #--------Getters---------
+    def getValorBase(self):
+        return self.__valorBase
+    def getValorIva(self):
+        return self.__valorIva
+    
+    #--------Metodo----------
+    def IVA(self):
+        valorBase=self.__precio/1.05
+        iva=self.__precio-valorBase
+        return valorBase, iva 
+
+class IvaDiecinueve(Articulos):
+    def __init__(self, nombre: str, precio: float,valorBase:float, valorIva:float):
+        super().__init__(nombre, precio, valorBase, valorIva)
+        self.__valorBase=valorBase
+        self.__valorIva=valorIva
+
+    #-------Setters----------
+    def setValorIva(self,valorIva:float):
+        self.__valorIva=valorIva
+    def setValorBase(self,valorBase:float):
+        self.__valorBase=valorBase
+    
+    #--------Getters---------
+    def getValorBase(self):
+        return self.__valorBase
+    def getValorIva(self):
+        return self.__valorIva
+    
+    #--------Metodo----------
+    def IVA(self):
+        valorBase=self.__precio/1.19
+        iva=self.__precio-valorBase
+        return valorBase, iva    
+
+def main():
+    while 1:
+        nombre=input('Articulo: ')
+        precio=input('Precio: ')
+        producto=Articulos(nombre,precio)
+
+        print('--------------------------------------------------------------------')
+        print(f'Precio base e Iva de: {producto.getNombre}:')
+        print('--------------------------------------------------------------------') 
+        
+        print(f'Articulo: {producto.getNombre()}-precio: {producto.getPrecio()}-precio base: {producto.IVA()}')
+   
+    print('\n------------------------------------')
+    print(f'Nombre: {inscrito2.getNombre()}\n',\
+        f'Edad: {inscrito2.getEdad()}\n',\
+            f'Cedula: {inscrito2.getCedula()}\n',\
+                f'#Goles: {inscrito2.getGoles()}\n',\
+                f'Equipo: {inscrito2.getEquipo()}\n')
+    print(inscrito2.anotar())
+    print(inscrito2.medallas())
+
+    print('\n------------------------------------')
+
+    print(f'Nombre: {inscrito3.getNombre()}\n',\
+        f'Edad: {inscrito3.getEdad()}\n',\
+            f'Cedula: {inscrito3.getCedula()}\n',\
+                f'#Cirugias en octubre 2023: {inscrito3.getCirugiasOctubre()}\n',\
+                f'#Años de formación: {inscrito3.getAñosFormacion()}\n')
+    print(inscrito3.cirugias())
+
+
+if __name__=="__main__":
+    main()
